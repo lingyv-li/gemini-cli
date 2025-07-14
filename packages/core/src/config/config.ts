@@ -45,6 +45,7 @@ import {
   DEFAULT_GEMINI_FLASH_MODEL,
 } from './models.js';
 import { ClearcutLogger } from '../telemetry/clearcut-logger/clearcut-logger.js';
+import { LspTool } from '../tools/lsp.js';
 
 export enum ApprovalMode {
   DEFAULT = 'default',
@@ -568,6 +569,7 @@ export class Config {
     registerCoreTool(ShellTool, this);
     registerCoreTool(MemoryTool);
     registerCoreTool(WebSearchTool, this);
+    registerCoreTool(LspTool, this);
 
     await registry.discoverTools();
     return registry;
